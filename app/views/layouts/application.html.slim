@@ -7,7 +7,7 @@ html ng-app="DigApp"
     /* Beware, CSRF is disabled */
     /* = csrf_meta_tags */
   body
-
+    p = link_to "Sign up", sign_up_path
     - if true # here you should check if user is signed in
       a href="/" INDEX
       hr
@@ -17,5 +17,7 @@ html ng-app="DigApp"
       = js_env
     - else
       = yield
+
+      
 
 
