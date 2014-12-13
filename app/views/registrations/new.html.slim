@@ -1,13 +1,13 @@
 h1 Registrations
-= form_tag sign_up_path do
-  = label_tag :email
-  = text_field_tag :email
+= form_for @user, url: sign_up_path do |f|
+  = f.label :email
+  = f.text_field :email
+  br 
+  = f.label :password 
+  = f.text_field  :password
   br
-  = label_tag :password
-  = text_field_tag :password
+  = f.label :password_confirmation
+  = f.text_field  :password_confirmation
   br
-  = label_tag :password_confirmation
-  = text_field_tag :password_confirmation
-  br
-  = submit_tag 'Create'
+  = f.submit 'Create'
 
