@@ -9,13 +9,16 @@ html ng-app="DigApp"
   body
     p = link_to "Sign up", sign_up_path
     p = link_to "Sign in", sign_in_path
-    a href="/" INDEX
-    hr
-    div ui-view=""
+    p = link_to "Log out", sign_out_path
+    - if current_user
+      a href="/" INDEX
+      hr
+      div ui-view=""
 
-    = javascript_include_tag 'application'
-    = js_env
-    = yield
+      = javascript_include_tag 'application'
+      = js_env
+    - else
+      = yield
       
 
 
