@@ -1,4 +1,7 @@
 class Api::DigsController < ApplicationController
+
+  before_action :curUser
+
   def index
     render json: Dig.all
   end
@@ -8,7 +11,7 @@ class Api::DigsController < ApplicationController
   end
 
   def create
-    render json: Dig.create!(dig_params)
+    render json: current_user.digs.create(dig_params)
   end
 
   def update
@@ -34,13 +37,19 @@ class Api::DigsController < ApplicationController
   end
 
   def comments
-    dig = Dig.find(params[:id])
+    dig = current_user.digs.find(params[:id])
 
     render json: dig.comments
   end
 
   def comment
     render json: Comment.find(params[:comment_id])
+  end
+
+  def curUser
+    if !current_user
+      head :forbidden
+    end
   end
 
   private
